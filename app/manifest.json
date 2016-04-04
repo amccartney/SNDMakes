@@ -11,7 +11,9 @@
   "background": {
     "scripts": [
       "scripts.babel/chromereload.js",
-      "scripts.babel/background.js"
+      "scripts.babel/background.js", 
+      "scripts.babel/content.js",
+      "scripts.babel/jquery.min.js",
     ]
   },
   "permissions": [],
