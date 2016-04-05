@@ -1,8 +1,4 @@
 $(document).ready(function() {
-    // $(document).on('selectionchange', function(e) {
-    //     var selection = window.getSelection().toString() || "";
-    // });
-
 
     // Icon to indicate where to open the iframe
     var openIcon = $('<img id="open" src="http://i.imgur.com/O1J3sW2.png?1" />').css({
@@ -34,6 +30,7 @@ $(document).ready(function() {
                 });
 
 
+    // The iframe to be appended to the side of the screen
     var iframe = $('<iframe id="form-iframe" /></iframe>').css({
                     width: "320px",
                     height: "1000px",
@@ -58,10 +55,14 @@ $(document).ready(function() {
     
 
     // For selecting highlighted text from the user
+    
     // var response = $(document).on('selectionchange', function(e) {
     //     var selection = window.getSelection().toString() || "";
     // });
 
+
+
+    // What happens when the user clicks the 'open' button
     $(document).on('click', '#open', function(e) {
 
         // Change the width of the main web page to accommodate new iframe
@@ -76,23 +77,26 @@ $(document).ready(function() {
         // Prepend an 'x' button to allow people to close the iframe
         exitIcon.prependTo('body');
 
+        // Remove the 'open button'
         $('#open').remove();
     });
 
 
 
+
+    // What happens when the user clicks the 'x' button
     $(document).on('click', '#close', function(e){
 
         // Remove iframe from side of page
         $('#form-iframe').remove();
 
-        // Remove the close button
+        // Remove the 'x' button
         $('#close').remove();
 
         // Restore width of original page elements
         $('.push-over').css("width", "100%");
 
-        // Put the open icon back at the top of the page
+        // Put the 'open' icon back at the top of the page
         openIcon.prependTo("body");
     });
 
