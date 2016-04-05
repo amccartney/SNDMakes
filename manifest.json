@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "V3 Chrome Extension",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["js/jquery-1.12.2.min.js","js/content.js"]
+    }
+  ],
+  "permissions": [],
+  "browser_action": {
+    "default_title": "graphic-view-source",
+    "default_popup": "popup.html"
+  }
+}
