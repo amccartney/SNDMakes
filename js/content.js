@@ -40,6 +40,7 @@ $(document).ready(function() {
                     backgroundColor: "white",
                     top: "0px",
                     right: "0px", 
+                    frameBorder: "0",
                     zIndex: "99999999999"
                 });
 
@@ -55,12 +56,15 @@ $(document).ready(function() {
     
 
     // For selecting highlighted text from the user
-    
+
     // var response = $(document).on('selectionchange', function(e) {
     //     var selection = window.getSelection().toString() || "";
     // });
 
 
+    var pageUrl = encodeURIComponent(window.location)
+
+    console.log(pageUrl);
 
     // What happens when the user clicks the 'open' button
     $(document).on('click', '#open', function(e) {
@@ -72,7 +76,7 @@ $(document).ready(function() {
         $('#form-iframe').remove();
 
         // Prepend the iframe to the body
-        iframe.prependTo('body').attr('src', 'http://localhost:3000/') //.contents().find('body').append('test');
+        iframe.prependTo('body').attr('src', 'https://v3-api.herokuapp.com/articles/embedded_form/?url=' + pageUrl) //.contents().find('body').append('test');
 
         // Prepend an 'x' button to allow people to close the iframe
         exitIcon.prependTo('body');
@@ -99,5 +103,6 @@ $(document).ready(function() {
         // Put the 'open' icon back at the top of the page
         openIcon.prependTo("body");
     });
+
 
 });
