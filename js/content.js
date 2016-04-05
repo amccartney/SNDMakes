@@ -1,12 +1,26 @@
 $(document).ready(function() {
 
+    var openInstructions = $('<div id="instructions">Select some text to begin.</div>').css({
+                    padding: "15px",
+                    position: "fixed",
+                    width: "210px",
+                    top: "70px",
+                    right: "0px",
+                    backgroundColor: "white",
+                    border: "3px solid lightblue",
+                    borderRight: "none",
+                    borderRadius: "5px 0px 0px 5px",
+                    // color: "white",
+                    zIndex: "999999999"
+    });
+
     // Icon to indicate where to open the iframe
     var openIcon = $('<img id="open" src="http://i.imgur.com/O1J3sW2.png?1" />').css({
                     width: "100px",
                     height: "100px",
                     cursor: "pointer",
                     position: "fixed",
-                    top: "15px",
+                    top: "80px",
                     borderRadius: "0",
                     right: "15px", 
                     zIndex: "9999999999999",
@@ -14,7 +28,6 @@ $(document).ready(function() {
                     margin: "0"
                 });
 
-        
 
     // Icon to indicate where to close the iframe
     var exitIcon = $('<img id="close" src="http://i.imgur.com/LCsxarg.png">'). css({
@@ -47,13 +60,25 @@ $(document).ready(function() {
     // Wrap the existing page elements with a new element whose width will change when the iframe is opened
     var bodyWrap = $('body').children().wrap('<div class="push-over" style="margin: 0;  padding: 0; border-radius: 0;"></div>');
 
-    // Append the open button to the DOM
-    openIcon.prependTo("body");
+    // Append open instructions to DOM
+    openInstructions.prependTo("body");
+
+    // Append the open button to the DOM when the user has selected more than five characters
+    $(document).on('selectionchange', function(e) {
+        var selection = window.getSelection().toString();
+
+        if (selection.length > 5) {
+            openIcon.prependTo("body");
+            $('#instructions').text('Start!');
+        } else {
+            openIcon.remove();
+            $('#instructions').text('Select some text to begin.');
+        }
+            
+    });
 
     // Create a variable that will store the width of the main page when the iframe is open
     var closedDocWidth = $(document).width() - 320;
-
-    
 
     // Encoded URL of the current article page
     var pageUrl = encodeURIComponent(window.location)
@@ -86,6 +111,7 @@ $(document).ready(function() {
 
         // Remove the 'open button'
         $('#open').remove();
+        $('#instructions').remove();
     });
 
 
@@ -105,7 +131,6 @@ $(document).ready(function() {
 
         // Put the 'open' icon back at the top of the page
         openIcon.prependTo("body");
+        openInstructions.prependTo("body")
     });
-
-
 });
