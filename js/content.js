@@ -55,16 +55,17 @@ $(document).ready(function() {
 
     
 
-    // For selecting highlighted text from the user
-
-    // var response = $(document).on('selectionchange', function(e) {
-    //     var selection = window.getSelection().toString() || "";
-    // });
-
-
+    // Encoded URL of the current article page
     var pageUrl = encodeURIComponent(window.location)
 
-    console.log(pageUrl);
+    // For selecting highlighted text from the user
+
+    function getSelectedText() {
+        var selection = window.getSelection().toString() || "";
+        var encodedSelection = encodeURIComponent(selection);
+        return encodedSelection;
+    }
+
 
     // What happens when the user clicks the 'open' button
     $(document).on('click', '#open', function(e) {
@@ -76,10 +77,12 @@ $(document).ready(function() {
         $('#form-iframe').remove();
 
         // Prepend the iframe to the body
-        iframe.prependTo('body').attr('src', 'https://v3-api.herokuapp.com/articles/embedded_form/?url=' + pageUrl) //.contents().find('body').append('test');
+        iframe.prependTo('body').attr('src', 'https://v3-api.herokuapp.com/articles/embedded_form/?url=' + pageUrl + '&' + getSelectedText()) //.contents().find('body').append('test');
 
         // Prepend an 'x' button to allow people to close the iframe
         exitIcon.prependTo('body');
+
+        console.log(getSelectedText());
 
         // Remove the 'open button'
         $('#open').remove();
