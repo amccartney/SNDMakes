@@ -45,17 +45,19 @@ $(document).ready(function() {
 
 
     // The iframe to be appended to the side of the screen
-    var iframe = $('<iframe id="form-iframe" /></iframe>').css({
+    var iframe = $('<iframe id="form-iframe" scrolling="yes" /></iframe>').css({
                     width: "320px",
-                    height: "1000px",
+                    height: "100%",
                     cursor: "pointer",
                     position: "fixed",
+                    paddingBottom: "50px",
                     borderLeft: "3px solid Gainsboro",
                     backgroundColor: "white",
                     top: "0px",
                     right: "0px", 
                     frameBorder: "0",
-                    zIndex: "99999999999"
+                    zIndex: "99999999999",
+                    overflow: "scroll"
                 });
 
     // Wrap the existing page elements with a new element whose width will change when the iframe is opened
@@ -92,6 +94,8 @@ $(document).ready(function() {
        
         var span = document.createElement("span");
         span.style.backgroundColor = "yellow";
+        span.style.padding = "5px";
+        span.style.borderRadius = "5px";
         span.className = "highlighted-text";
         
         var sel = window.getSelection();
