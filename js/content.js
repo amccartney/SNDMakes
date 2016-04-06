@@ -118,8 +118,8 @@ $(document).ready(function() {
         // Remove any existing iframe
         $('#form-iframe').remove();
 
-        // var urlBase = 'https://v3-api.herokuapp.com/articles/new/?url='
-        var urlBase = 'http://localhost:3000/articles/new/?url='
+        var urlBase = 'https://v3-api.herokuapp.com/articles/new/?url='
+        // var urlBase = 'http://localhost:3000/articles/new/?url='
 
         // Prepend the iframe to the body
         iframe.prependTo('body').attr('src', urlBase + pageUrl + '&component_title=' + getSelectedText()) //.contents().find('body').append('test');
