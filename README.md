@@ -28,6 +28,9 @@ In the future, this will include a 'view annotations' feature that will look som
 
 ![annotations](display-mode-01.png)
 
+![siren](http://www.drudgesiren.com/siren.gif) 
+*If you would like to help us make this happen, please contact one of us via the Twitter dot com!*
+
 ---
 
 # Documentation
