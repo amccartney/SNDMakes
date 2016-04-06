@@ -24,6 +24,8 @@ To use this extension
 
 #### Submissions are logged [here.](http://v3-api.herokuapp.com/)
 
+To view the code of the inner workings of the app, go to the [API/app repo.](https://github.com/davidrleonard/v3-api)
+
 In the future, this will include a 'view annotations' feature that will look something like
 
 ![annotations](display-mode-01.png)
