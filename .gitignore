@@ -3,6 +3,7 @@ temp
 .tmp
 dist
 .sass-cache
+.editorconfig
 app/bower_components
 test/bower_components
 package
