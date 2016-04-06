@@ -1,6 +1,6 @@
-# vizfyi Chrome Extension
+# V3 Chrome Extension
 
-### Team Embarcadero
+### Team Embarcadero - SND Makes SF
 
 To get extension working on your computer
 
