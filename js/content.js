@@ -3,14 +3,15 @@ $(document).ready(function() {
     var openInstructions = $('<div id="instructions">Select some text to begin.</div>').css({
                     padding: "15px",
                     position: "fixed",
-                    width: "210px",
+                    width: "230px",
                     top: "70px",
                     right: "0px",
                     backgroundColor: "white",
                     border: "3px solid lightblue",
+                    borderBottom: "6px solid lightblue",
                     borderRight: "none",
                     borderRadius: "5px 0px 0px 5px",
-                    // color: "white",
+                    fontSize: "13pt",
                     zIndex: "999999999"
     });
 
@@ -88,6 +89,21 @@ $(document).ready(function() {
     function getSelectedText() {
         var selection = window.getSelection().toString() || "";
         var encodedSelection = encodeURIComponent(selection);
+       
+        var span = document.createElement("span");
+        span.style.backgroundColor = "yellow";
+        span.className = "highlighted-text";
+        
+        var sel = window.getSelection();
+        if (sel.rangeCount) {
+            var range = sel.getRangeAt(0).cloneRange();
+            range.surroundContents(span);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+
+
+
         return encodedSelection;
     }
 
@@ -102,7 +118,7 @@ $(document).ready(function() {
         $('#form-iframe').remove();
 
         // Prepend the iframe to the body
-        iframe.prependTo('body').attr('src', 'https://v3-api.herokuapp.com/articles/embedded_form/?url=' + pageUrl + '&' + getSelectedText()) //.contents().find('body').append('test');
+        iframe.prependTo('body').attr('src', 'https://v3-api.herokuapp.com/articles/new/?url=' + pageUrl + '&' + getSelectedText()) //.contents().find('body').append('test');
 
         // Prepend an 'x' button to allow people to close the iframe
         exitIcon.prependTo('body');
@@ -112,6 +128,7 @@ $(document).ready(function() {
         // Remove the 'open button'
         $('#open').remove();
         $('#instructions').remove();
+
     });
 
 
@@ -132,5 +149,7 @@ $(document).ready(function() {
         // Put the 'open' icon back at the top of the page
         openIcon.prependTo("body");
         openInstructions.prependTo("body")
+
+        $('span.highlighted-text').contents().unwrap();
     });
 });
