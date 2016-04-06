@@ -22,6 +22,8 @@ To use this extension
 3. Click the pen icon in the top right corner
 4. Fill out the form and submit
 
+#### Submissions are logged [here.](http://v3-api.herokuapp.com/)
+
 In the future, this will include a 'view annotations' feature that will look something like
 
 ![annotations](display-mode-01.png)
